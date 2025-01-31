@@ -1,6 +1,6 @@
 # CV-Quantum Simulation of Classical Dynamics
 
-The code in this repository can be used to simulate classical Hamiltonian systems using the Koopman von Neumann formalism, as described in our paper [An application of continuous-variable gate synthesis to quantum simulation of classical dynamics]([https://duckduckgo.com](https://arxiv.org/abs/2407.08006)). Gate decompositions are implemented for operations up to fourth order in the quadrature operators, though technological limitations lead to challenges in implementing the higher order terms. 
+The code in this repository can be used to simulate classical Hamiltonian systems using the Koopman von Neumann formalism, as described in our paper [An application of continuous-variable gate synthesis to quantum simulation of classical dynamics](https://arxiv.org/abs/2407.08006). Gate decompositions are implemented for operations up to fourth order in the quadrature operators, though technological limitations lead to challenges in implementing the higher order terms. 
 
 Below are animations produced using our code for two different potential functions. For the quadratic potential, which corresponds to a harmonic oscillator, the quantum simulation matches well with the classical molecular dynamics simulation.
 

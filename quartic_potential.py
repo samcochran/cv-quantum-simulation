@@ -6,13 +6,15 @@ from matplotlib import pyplot as plt
 import strawberryfields as sf
 from strawberryfields.ops import *
 from gate_decompositions import *
+import warnings
+warnings.filterwarnings(action='ignore', module='strawberryfields')
 
 
 #set global parameters
 m = 1
 const = 1
 potential = lambda x: (x**2 - const)**2
-t = np.linspace(0, 1, 20)
+t = np.linspace(0, 2, 20)
 x_window = [-3, 3]
 x_grid = np.linspace(x_window[0], x_window[1], 1000)
 window = np.array([x_window, [-1, 1 + np.max(potential(x_grid))]])
@@ -46,6 +48,7 @@ def prepare_initial_state(n_qumodes, q, x0=None, p0=None, squeeze=None):
             Xgate(x0[i]) | q[i]
         if p0 is not None:
             Zgate(p0[i]) | q[i]
+    Vac | q[n_qumodes - 1]
 
 def step(dt, q):
     quadratic2(4, -dt, 1, 0, q)
@@ -70,19 +73,13 @@ progress = tqdm(total=len(t))
 for k in range(len(t)):
     results = run(n_qumodes, k, dt, x_grid, p_grid, eng, x0=[-2, 0], p0=[0, 0], squeeze=[2, 2])
     partition = simpson(y=results, x=x_grid)
-    quantum_snapshots.append(results/partition)#force normalize, this is a bandaid
+    quantum_snapshots.append(results/partition)#force normalize; this is a bandaid fix, but the fock backend results in amplitude decay
     progress.update(1)
 progress.close()
-# plt.plot(x_grid, quantum_snapshots[0])
-# plt.plot(x_grid, quantum_snapshots[-1])
-# plt.show()
 
 
 #create animations
-ani = animate_evolution(window, x_grid, potential, hist_bins, classical_snapshots, quantum_snapshots)
-ani.save('./animations/quartic_potential_both.mp4', writer='ffmpeg')
+ani = animate_evolution(window, x_grid, potential, hist_bins, classical_snapshots, quantum_snapshots, title='Quartic Potential')
+ani.save('./animations/quartic_potential.gif', writer='ffmpeg', dpi=400)
+ani.save('./animations/quartic_potential.mp4', writer='ffmpeg', dpi=400)
 plt.close()
-
-
-#problems to discuss:
-#1. am i doing the ancilla qumode properly?

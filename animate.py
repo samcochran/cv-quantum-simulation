@@ -8,11 +8,14 @@ from matplotlib.animation import FuncAnimation
 def animate_evolution(window, x_grid, potential, hist_bins, classical_snapshots, quantum_snapshots=None, interval=60, title=None):
     """
     Parameters:
-        x_grid: ndarray containing the grid points for the spatial domain
-        equilibria: ndarray containing the equilibrium positions (dimension should be the same as the number of snapshot lists)
-        snapshots: list of snapshot lists; each snapshot list contains K ndarrays of wavefunction amplitudes. Each of these arrays should have the same length as x_grid.
         window: plotting window, array of the form [[x_min, x_max], [y_min, y_max]]
-        interval: optional, corresponds to the delay between animation frames.
+        x_grid: ndarray containing the grid points for the spatial domain
+        potential: a function corresponding to the potential energy
+        hist_bins: array of histogram bins for the classical molecular dynamics simulation
+        classical_snapshots: list of arrays; each of these arrays will have the same length as x_grid
+        quantum_snapshots: optional, list of arrays; each of these arrays will have the same length as x_grid
+        interval: optional, corresponds to the delay between animation frames
+        title: optional, title for the animation plot
     """
     N = len(classical_snapshots)
     K = classical_snapshots.shape[0]

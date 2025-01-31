@@ -83,4 +83,5 @@ progress.close()
 #create animations
 ani = animate_evolution(window, x_grid, potential, hist_bins, classical_snapshots, quantum_snapshots, title='Quadratic Potential', interval=20)
 ani.save('./animations/quadratic_potential.gif', writer='ffmpeg', dpi=400)
+ani.save('./animations/quadratic_potential.mp4', writer='ffmpeg', dpi=400)
 plt.close()

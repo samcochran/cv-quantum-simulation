@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 plt.style.use('seaborn-v0_8-deep')
 from matplotlib.animation import FuncAnimation
 
-def animate_evolution(window, x_grid, potential, hist_bins, classical_snapshots, quantum_snapshots=None, interval=60):
+def animate_evolution(window, x_grid, potential, hist_bins, classical_snapshots, quantum_snapshots=None, interval=60, title=None):
     """
     Parameters:
         x_grid: ndarray containing the grid points for the spatial domain
@@ -18,9 +18,11 @@ def animate_evolution(window, x_grid, potential, hist_bins, classical_snapshots,
     K = classical_snapshots.shape[0]
     n, _ = np.histogram([], hist_bins)
     fig, ax = plt.subplots()
-    _, _, bar_container = ax.hist(classical_snapshots[0, :], hist_bins, density=True, color='k', alpha=0.75)
-    line = ax.plot([], [], c='k', alpha=.75)[0]
-    ax.plot(x_grid, potential(x_grid))
+    if title is not None: fig.suptitle(title, fontsize=14)
+    ax.plot(x_grid, potential(x_grid), c='k', alpha=.5, label='Potential Function', zorder=0)
+    _, _, bar_container = ax.hist(classical_snapshots[0, :], hist_bins, density=True, color='lightcoral', label='Classical Simulation', zorder=1)
+    line = ax.plot([], [], c='royalblue', label='Quantum Simulation', zorder=2)[0]
+    ax.legend()
 
     def init():
         ax.set_xlim(window[0, 0], window[0, 1])

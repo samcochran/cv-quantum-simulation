@@ -13,7 +13,7 @@ sf.hbar = 1
 
 def quadratic2(C, t, j, k, q):
     """
-    Quantum circuit for the 2-mode quadratic term e^(-1j C t P_j X_k)
+    Quantum circuit for the 2-mode quadratic term e^(-1j C t P_j X_k) (just a wrapper for the CXgate)
     Parameters:
         C: constant coefficient
         t: evolution time

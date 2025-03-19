@@ -1,0 +1,19 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: CV-Quantum Simulation of Classical Dynamics
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Sam
+    family-names: Cochran
+    email: samco@umich.edu
+    affiliation: University of Michigan
+    orcid: 'https://orcid.org/0000-0002-5538-641X'
+identifiers:
+  - type: url
+    value: 'https://doi.org/10.48550/arXiv.2407.08006'
+repository-code: 'https://github.com/samcochran/cv-quantum-simulation'

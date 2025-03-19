@@ -127,7 +127,7 @@ def quartic1(alpha, j, ancilla, q):
         cubic2(C=1, t=-1, j=ancilla, k=j, q=q)
         Pgate(2*alpha) | q[ancilla]
         cubic2(C=1, t=1, j=ancilla, k=j, q=q)
-    cubic2X(C=2*alpha, t=1, j=ancilla, k=j, q=q)
+    cubic2X(C=2, t=alpha, j=ancilla, k=j, q=q)
     Pgate(-2*alpha) | q[ancilla]
     identity(alpha, j, ancilla)
 
@@ -155,17 +155,16 @@ def quarticX(a_list, C, t, j, k, l, m, ancilla, q):
         if h[2] != 0: CXgate(h[2]).H | (q[l], q[j])
         if h[3] != 0: CXgate(h[3]).H | (q[m], q[j])
     def coefficient(v):
-        return 1/(2**(a-1)*factorial(a))*(-1)**sum(v[1:])*np.prod([binom(a[i], v[i]) for i in range(1, 4)])
+        return 1/(2**(a-1)*factorial(a))*(-1)**sum(v[1:])*np.prod([binom(a_list[i], v[i]) for i in range(1, 4)])
     def multiplicand(v, h):
         unitary(h)
         quartic1(C*t*coefficient(v), j, ancilla, q)
         unitaryH(h)
-
-    for v_1 in range(a_list[1]):
-        for v_2 in range(a_list[2]):
-            for v_3 in range(a_list[3]):
+    for v_1 in range(a_list[1] + 1):
+        for v_2 in range(a_list[2] + 1):
+            for v_3 in range(a_list[3] + 1):
                 v = [0, v_1, v_2, v_3]
-                h = [a[i]-2*v_i for v_i in v]
+                h = [a_list[i]-2*v_i for i, v_i in zip(range(len(v)), v)]
                 multiplicand(v, h)
 
 def quartic(a_list, C, t, j, k, l, m, ancilla, q):

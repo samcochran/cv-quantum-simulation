@@ -183,7 +183,7 @@ def quartic(a_list, C, t, j, k, l, m, ancilla, q):
     """
     Quantum circuit for the 2-4-mode quartic term e^(-1j C t P_j X_k^a_2 X_l^a_3 X_m^a_4) with a+b+c=3
     Parameters:
-        a_list: length 4 list of a coefficients [1, a_2, a_3, a_4]
+        a_list: a length 4 list of a coefficients [1, a_2, a_3, a_4]
         C: positive coefficient
         t: evolution time
         j, k, l: qumode indices

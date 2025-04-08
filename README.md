@@ -1,6 +1,6 @@
 # CV-Quantum Simulation of Classical Dynamics
 
-The code in this repository implements a continuous-variable quantum algorithm to simulate classical Hamiltonian systems using the Koopman von Neumann formalism, as described in our paper [An application of continuous-variable gate synthesis to quantum simulation of classical dynamics][https://doi.org/10.1116/5.0234007]. The algorithm is simulated using Strawberry Fields. Gate decompositions are implemented for operations up to fourth order in the quadrature operators, though technological limitations lead to challenges in implementing the higher order terms. The animations below were produced by applying our code to two different potential functions. 
+The code in this repository implements a continuous-variable quantum algorithm to simulate classical Hamiltonian systems using the Koopman von Neumann formalism, as described in our paper [An application of continuous-variable gate synthesis to quantum simulation of classical dynamics](https://doi.org/10.1116/5.0234007). The algorithm is simulated using Strawberry Fields. Gate decompositions are implemented for operations up to fourth order in the quadrature operators, though technological limitations lead to challenges in implementing the higher order terms. The animations below were produced by applying our code to two different potential functions. 
 
 For a quadratic potential corresponding to a simple harmonic oscillator, the quantum simulation matches well with the classical molecular dynamics simulation.
 
